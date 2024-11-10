@@ -34,8 +34,39 @@ public class Insertion {
             System.out.print(temp.val + "->");
             temp = temp.next;
         }
+        System.out.println("");
+
+        //Insertion of new node at position k
+        node1 = insert(node1, 7, 4);
+
+        temp = node1;
+
+        while(temp!= null){
+            System.out.print(temp.val + "->");
+            temp = temp.next;
+        }
 
 
+
+
+    }
+
+    public static DoublyNode insert(DoublyNode head, int val, int k){
+        if(head == null) return null;
+
+        DoublyNode temp = head;
+        int i = 1;
+        while(i<k-1 && temp.next!= null){
+            temp = temp.next;
+            i++;
+        }
+        DoublyNode node = new DoublyNode(val);
+        node.next = temp.next;
+        node.prev = temp;
+        temp.next = node;
+        node.next.prev = node;
+
+        return head;
 
 
     }
