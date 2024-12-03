@@ -1,5 +1,7 @@
 package Threads;
 
+import java.util.Comparator;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -12,5 +14,11 @@ public class Main {
 
         t1.start();
         t2.start();
+
+        Comparator<double[]> comp = new Comparator<>(){
+            public int compare(double[] arr1, double[] arr2){
+                return Double.compare(arr2[2], arr1[2]);
+            }
+        };
     }
 }
