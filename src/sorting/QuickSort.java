@@ -11,29 +11,32 @@ public class QuickSort {
 
         System.out.println(Arrays.toString(arr));
     }
-    public static void quickSort(int[] arr, int l, int r){
+
+    private static void quickSort(int[] arr, int l, int r){
         if(l>=r) return;
-        int pivot = arr[r];
-        int pi = partition(arr, l, r); // where the array is partitioned
+        int pi = partition(l, r, arr);
         quickSort(arr, l, pi-1);
         quickSort(arr, pi+1, r);
     }
 
-    public static int partition(int[] arr, int l, int r){
-        int pivot = arr[r];
+    private static int partition(int l, int r, int[] arr){
         int i = l-1;
-        for(int j = l ; j<=r-1 ; j++){
-            if(arr[j]<pivot){
+        int pivot = arr[r];
+
+        for(int j = l ; j<r ; j++){
+            if(arr[j] < pivot){
                 i++;
-                int temp = arr[j];
-                arr[j] = arr[i];
-                arr[i] = temp;
+                swap(arr, i, j);
             }
         }
-        int t = arr[r];
-        arr[r] = arr[i+1];
-        arr[i+1] = t;
+        swap(arr, i+1, r);
 
         return i+1;
+    }
+
+    private static void swap(int[] arr, int i, int j){
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
