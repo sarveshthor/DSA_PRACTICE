@@ -1,7 +1,9 @@
 package Streams;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class Operations {
@@ -12,6 +14,15 @@ public class Operations {
         //square all the given numbers
         List<Integer> squaredNumbers = ls.stream().map(n -> n*n).toList();
         System.out.println("Squared Numbers -> " + squaredNumbers);
+
+        //max element
+        Optional<Integer> maxElement = ls.stream().max((a,b) -> (a-b));
+        maxElement.ifPresent(value -> System.out.println("max value is : " + value));
+
+        //second highest number in the list
+        Optional<Integer> secondmax = ls.stream().distinct().sorted((a,b) -> (b-a)).skip(1).findFirst();
+        secondmax.ifPresentOrElse(value -> System.out.println("second max number : " + value),
+                () -> System.out.println("Not enough distinct elements"));
 
 
         //filter out all the even numbers
