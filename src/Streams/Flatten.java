@@ -15,7 +15,7 @@ public class Flatten {
         ls.add(Stream.of(1,2,3,4,5).toList());
         ls.add(Stream.of(66,33,2,3,4).toList());
 
-        List<Integer> res = ls.stream().flatMap(List::stream).toList();
+        List<Integer> res = ls.stream().flatMap(list -> list.stream()).toList();
 
         System.out.println(res);
 

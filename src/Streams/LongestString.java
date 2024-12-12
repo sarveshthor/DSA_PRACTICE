@@ -8,7 +8,7 @@ public class LongestString {
     public static void main(String[] args) {
         List<String> ls = Arrays.asList("sarvesh", "adssfsdfsdf","srsersdfsdfsdfsdf");
 
-        Optional<String> longestString = ls.stream().max(Comparator.comparingInt(String::length));
+        Optional<String> longestString = ls.stream().max(Comparator.comparingInt(str->str.length()));
 
         longestString.ifPresent(System.out::println);
 
